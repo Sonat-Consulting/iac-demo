@@ -1,1 +1,8 @@
 **/.vscode/
+
+*DotSettings.user
+
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
