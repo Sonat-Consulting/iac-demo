@@ -2,6 +2,10 @@ param location string
 param insightsConnectionString string
 param insightsInstrumentationKey string
 
+param namePrefix string
+param skuName string
+param skuTier string
+
 resource demoappplan 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: 'demo-app-plan'
   location: location
@@ -10,13 +14,13 @@ resource demoappplan 'Microsoft.Web/serverfarms@2021-02-01' = {
     reserved: true
   }
   sku: {
-    tier: 'Basic'
-    name: 'B1'
+    tier: skuTier
+    name: skuName
   }
 }
 
 resource demoapp 'Microsoft.Web/sites@2021-02-01' = {
-  name: 'cubit-demo-app'
+  name: '${namePrefix}-cubit-demo-app'
   location: location
   properties: {
     siteConfig: {

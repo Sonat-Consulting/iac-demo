@@ -1,6 +1,11 @@
 param location string
 param insightsConnectionString string
 param insightsInstrumentationKey string
+
+param namePrefix string
+param skuName string
+param skuTier string
+
 @secure()
 param mySecret string
 
@@ -12,13 +17,13 @@ resource demoappplan 'Microsoft.Web/serverfarms@2021-02-01' = {
     reserved: true
   }
   sku: {
-    tier: 'Basic'
-    name: 'B1'
+    tier: skuTier
+    name: skuName
   }
 }
 
 resource demoapp 'Microsoft.Web/sites@2021-02-01' = {
-  name: 'cubit-demo-app'
+  name: '${namePrefix}-cubit-demo-app'
   location: location
   properties: {
     siteConfig: {
@@ -44,7 +49,7 @@ resource demoapp 'Microsoft.Web/sites@2021-02-01' = {
           value: mySecret
         }
       ]
-      linuxFxVersion: 'DOCKER|ghcr.io/sonat-consulting/swapi-dotnet:v0.0.5'
+      linuxFxVersion: 'DOCKER|ghcr.io/sonat-consulting/swapi-dotnet:latest'
     }
     serverFarmId: demoappplan.id
   }
