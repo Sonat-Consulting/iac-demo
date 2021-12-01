@@ -1,5 +1,8 @@
 # Infrastructure as Code med Microsoft Bicep
 
+Dokumentasjon for Bicep finnes her:
+
+
 ## Oppgave 1
 Lag et Bicep script med navnet `webapp.bicep` som oppretter følgende:
 1. En App Service Plan
@@ -17,21 +20,15 @@ $ az deployment group create --resource-group {navn_på_ressursgruppe} --name cu
 ```
 
 ## Oppgave 2
-1. Modifiser `webapp.bicep` med følgende endringer:
-   * Gjør `location` om til en parameter.
-   * Opprett parameter `insightsConnectionString`. Denne skal sette appSetting: `APPLICATIONINSIGHTS_CONNECTION_STRING`.
-   * Opprett parameter `insightsInstrumentationKey`. Denne skal sette appSetting: `APPINSIGHTS_INSTRUMENTATIONKEY`.
-2. Lag ett nytt script som heter `insights.bicep`. Dette scriptet skal opprette følgende:
-   * Log Analytics Workspace'
-       * Sku name: `PerGB2018`
-   * Application Insights, som bruker den genererte Log Analytics Workspace som backend
-       * kind: web
-       * properties Application_Type: web
-       * properties RetentionInDays: 30
-       * gjør location til en parameter
-3. Lag en parameterfil: `main.parameters-dev.json`, som setter en navn-prefix og location.    
+1. Lag en Log Analytics Workspace og en Application Insights.
+   * tip: Log Analytics Workspace heter "Microsoft.OperationalInsights/workspaces" i Bicep.
+   * tip: Application Insights heter "Microsoft.Insights/components" i Bicep.
+   * tip: Bruk sku name `PerGB2018` i Log Analytics Workspace
+2. Kople App Servicen til den opprettede Application Insights.
+3. Gjør location om til en parameter. Lag også en navne-prefix som parameter.
+4. Lag en parameterfil: `main.parameters-dev.json` som setter parametre.    
    Se dokumentasjon for parameterfiler her: https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameter-files
-4. Lag et `main.bicep` script, som kaller `webapp.bicep` og `insights.bicep`, og parameter-verdier.       
+5. Flytt Application Insights og Log Analytics Workspace til en egen fil (modul), og lag et `main.bicep` script som kaller modulene.
    Tips: Bruk output fra insights-modulen for å sette insightsConnectionString og insightsInstrumentationKey i webapp-modulen.
 
 Deploy med følgende kommando:

@@ -1,4 +1,6 @@
 # Infrastructure as Code with Terraform
+Dokumentasjon finnes på https://www.terraform.io/
+Velg "Registry" -> "Azure" -> "Documentation"
 
 ## Oppgave 1
 Lag en ny resursgruppe via Azure portalen.
@@ -26,6 +28,8 @@ $ terraform init
 $ terraform plan --var-file .\dev.tfvars
 $ terraform apply --var-file .\dev.tfvars
 ```
+
+**Ekstraoppgave:** Lagre state i en Azure Storage Account.
 
 ## Oppgave 3
 Hent inn secret fra key vault.
