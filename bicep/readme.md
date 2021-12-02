@@ -1,6 +1,7 @@
 # Infrastructure as Code med Microsoft Bicep
 
-Dokumentasjon for Bicep finnes her:
+Dokumentasjon for Bicep finnes her:    
+https://docs.microsoft.com/en-us/azure/templates/
 
 
 ## Oppgave 1
@@ -13,7 +14,7 @@ Lag et Bicep script med navnet `webapp.bicep` som oppretter følgende:
     * appSettings: DOCKER_REGISTRY_SERVER_URL = https://ghcr.io og 
     * linuxFxVersion = DOCKER|ghcr.io/sonat-consulting/swapi-dotnet:latest
 
-Lag en ressursgruppe via Azure portalen, og deploy scriptet til ressursgruppen med følgende kommando:
+Lag en ressursgruppe via Azure portalen. og deploy scriptet til ressursgruppen med følgende kommando. Bruk "-w" for å få en preview av hvilke endringer som blir gjort:
 
 ```
 $ az deployment group create --resource-group {navn_på_ressursgruppe} --name cubit-demo-iac-deploy --template-file webapp.bicep
