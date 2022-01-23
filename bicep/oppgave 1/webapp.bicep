@@ -14,7 +14,7 @@ resource demoappplan 'Microsoft.Web/serverfarms@2021-02-01' = {
 }
 
 resource demoapp 'Microsoft.Web/sites@2021-02-01' = {
-  name: 'cubit-demo-app'
+  name: '${resourceGroup().name}-app'
   location: location
   properties: {
     siteConfig: {

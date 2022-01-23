@@ -17,7 +17,7 @@ Lag et Bicep script med navnet `webapp.bicep` som oppretter følgende:
 Lag en ressursgruppe via Azure portalen. og deploy scriptet til ressursgruppen med følgende kommando. Bruk "-w" for å få en preview av hvilke endringer som blir gjort:
 
 ```
-$ az deployment group create --resource-group {navn_på_ressursgruppe} --name cubit-demo-iac-deploy --template-file webapp.bicep
+$ az deployment sub group create --resource-group {navn-på-ressursgruppe} --name {navn-på-deploy} --template-file webapp.bicep
 ```
 
 ## Oppgave 2
@@ -34,7 +34,7 @@ $ az deployment group create --resource-group {navn_på_ressursgruppe} --name cu
 
 Deploy med følgende kommando:
 ```
-$ az deployment group create --resource-group {navn_på_ressursgruppe} --name cubit-demo-iac-deploy --template-file main.bicep --parameters main.parameters-dev.json
+$ az deployment sub create --name {navn-på-deploy} --location NorwayEast --template-file main.bicep --parameters main.parameters-dev.json
 ```
 
 **Ekstraoppgave**: Flytt sku-settings ut i parameter-filen. Prøv å eksperimenter med å opprette ulike miljøer med ulik location og sku.
