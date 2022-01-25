@@ -1,7 +1,7 @@
 resource "azurerm_app_service_plan" "appserviceplan" {
   name = "swapi-app-plan"
-  location = data.azurerm_resource_group.swapi_rg.location
-  resource_group_name = data.azurerm_resource_group.swapi_rg.name
+  location = azurerm_resource_group.swapi_rg.location
+  resource_group_name = azurerm_resource_group.swapi_rg.name
   kind = "Linux"
   reserved = true
   sku {
@@ -11,9 +11,9 @@ resource "azurerm_app_service_plan" "appserviceplan" {
 }
 
 resource "azurerm_app_service" "swapi_app_service" {
-  name = "${var.env_prefix}-swapi-dotnet-app-terraform-app"
-  location = data.azurerm_resource_group.swapi_rg.location
-  resource_group_name = data.azurerm_resource_group.swapi_rg.name
+  name = "${var.env_prefix}-larsaaberg-terraform-app"
+  location = azurerm_resource_group.swapi_rg.location
+  resource_group_name = azurerm_resource_group.swapi_rg.name
   app_service_plan_id = azurerm_app_service_plan.appserviceplan.id
 
   site_config {

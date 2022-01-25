@@ -17,7 +17,7 @@ Lag et Bicep script med navnet `webapp.bicep` som oppretter følgende:
 Lag en ressursgruppe via Azure portalen. og deploy scriptet til ressursgruppen med følgende kommando. Bruk "-w" for å få en preview av hvilke endringer som blir gjort:
 
 ```
-$ az deployment sub group create --resource-group {navn-på-ressursgruppe} --name {navn-på-deploy} --template-file webapp.bicep
+$ az deployment group create --resource-group {navn-på-ressursgruppe} --name {navn-på-deploy} --template-file webapp.bicep
 ```
 
 ## Oppgave 2
@@ -26,10 +26,11 @@ $ az deployment sub group create --resource-group {navn-på-ressursgruppe} --nam
    * tip: Application Insights heter "Microsoft.Insights/components" i Bicep.
    * tip: Bruk sku name `PerGB2018` i Log Analytics Workspace
 2. Kople App Servicen til den opprettede Application Insights.
-3. Gjør location om til en parameter. Lag også en navne-prefix som parameter.
+3. Hent location fra `deployment().location`
 4. Lag en parameterfil: `main.parameters-dev.json` som setter parametre.    
    Se dokumentasjon for parameterfiler her: https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameter-files
-5. Flytt Application Insights og Log Analytics Workspace til en egen fil (modul), og lag et `main.bicep` script som kaller modulene.
+5. Legg til name-prefix (`dev` for eksempel) for app-servicen til som parameter.
+6. Flytt Application Insights og Log Analytics Workspace til en egen fil (modul), og lag et `main.bicep` script som kaller modulene.
    Tips: Bruk output fra insights-modulen for å sette insightsConnectionString og insightsInstrumentationKey i webapp-modulen.
 
 Deploy med følgende kommando:

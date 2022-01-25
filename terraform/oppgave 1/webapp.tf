@@ -11,7 +11,7 @@ resource "azurerm_app_service_plan" "appserviceplan" {
 }
 
 resource "azurerm_app_service" "swapi_app_service" {
-  name = "swapi-dotnet-app-terraform-app"
+  name = "larsaabergiacdemoellerhurdetteerentest"
   location = data.azurerm_resource_group.swapi_rg.location
   resource_group_name = data.azurerm_resource_group.swapi_rg.name
   app_service_plan_id = azurerm_app_service_plan.appserviceplan.id

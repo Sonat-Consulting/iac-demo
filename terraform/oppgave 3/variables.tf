@@ -14,3 +14,7 @@ variable "app_plan_size" {
 variable "env_prefix" {
     type = string
 }
+
+variable "location" {
+    type = string
+}
